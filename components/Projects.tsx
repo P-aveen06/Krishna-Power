@@ -5,7 +5,14 @@ import { MapPin, Zap, TrendingUp, DollarSign, Leaf, Cloud } from 'lucide-react';
 
 // --- CSS Art Scenes ---
 
-const CloudProp = ({ delay = 0, top = '10%', scale = 1, duration = 20 }) => (
+interface CloudPropProps {
+  delay?: number;
+  top?: string;
+  scale?: number;
+  duration?: number;
+}
+
+const CloudProp: React.FC<CloudPropProps> = ({ delay = 0, top = '10%', scale = 1, duration = 20 }) => (
   <motion.div
     initial={{ x: '-100%' }}
     animate={{ x: '400%' }}
@@ -102,7 +109,14 @@ const HomeScene = () => (
 
 // --- Stats Component ---
 
-const StatBadge = ({ icon: Icon, value, label, color }) => (
+interface StatBadgeProps {
+  icon: React.ElementType;
+  value: string;
+  label: string;
+  color: string;
+}
+
+const StatBadge: React.FC<StatBadgeProps> = ({ icon: Icon, value, label, color }) => (
   <motion.div 
     whileHover={{ scale: 1.05, y: -2 }}
     className={`flex-1 p-4 rounded-2xl border ${color} bg-white/50 backdrop-blur-sm flex flex-col items-center text-center gap-2 transition-shadow hover:shadow-lg`}

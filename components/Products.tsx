@@ -1,7 +1,7 @@
 
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { Zap, Factory, Lightbulb, Check, ArrowRight, Sparkles } from 'lucide-react';
+import { Check, ArrowRight, Sparkles } from 'lucide-react';
 
 // --- Abstract 3D Visuals ---
 
@@ -286,7 +286,7 @@ export const Products: React.FC = () => {
         </div>
 
         {/* Tab Switcher */}
-        <div className="mt-8 md:mt-12 p-2 bg-white/60 backdrop-blur-md border border-white/40 rounded-3xl md:rounded-full shadow-lg flex flex-col md:flex-row items-center gap-2 w-full md:w-auto">
+        <div className="mt-8 md:mt-12 p-2 bg-white/60 backdrop-blur-md border border-white/40 rounded-3xl md:rounded-full shadow-lg flex flex-col md:w-full md:flex-row items-center gap-2 w-full md:w-auto">
           {PRODUCTS.map((product) => (
             <button
               key={product.id}

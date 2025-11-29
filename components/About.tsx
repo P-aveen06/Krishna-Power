@@ -19,7 +19,6 @@ const SpotlightCard: React.FC<SpotlightCardProps> = ({
   const divRef = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [opacity, setOpacity] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!divRef.current) return;
@@ -29,12 +28,10 @@ const SpotlightCard: React.FC<SpotlightCardProps> = ({
   };
 
   const handleFocus = () => {
-    setIsHovered(true);
     setOpacity(1);
   };
 
   const handleBlur = () => {
-    setIsHovered(false);
     setOpacity(0);
   };
 
@@ -163,7 +160,7 @@ export const About: React.FC = () => {
                 </p>
                 <div className="p-4 bg-orange-50/50 rounded-xl border border-orange-100/50">
                    <p className="text-sm text-gray-600">
-                     Also proud manufacturers of <span className="font-bold text-orange-600">Krishna Solar Water Heaters</span>.
+                     Also proud manufacturers of <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-amber-500">Krishna Solar Water Heaters</span>.
                    </p>
                 </div>
               </div>
@@ -239,4 +236,3 @@ export const About: React.FC = () => {
     </section>
   );
 };
-    

@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, ArrowRight, Instagram, Linkedin, Facebook } from 'lucide-react';
+import { Logo } from './Logo';
 
 // --- Constellation Canvas Animation ---
 
@@ -135,7 +136,7 @@ export const Contact: React.FC = () => {
                   <div>
                     <h4 className="font-bold text-lg mb-1">Visit Us</h4>
                     <p className="text-gray-400 leading-relaxed">
-                      Krishna Power Technologies,<br />
+                      Krishna Solar,<br />
                       Villupuram, Tamil Nadu, India.
                     </p>
                   </div>
@@ -158,8 +159,8 @@ export const Contact: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="font-bold text-lg mb-1">Email Us</h4>
-                    <p className="text-gray-400 hover:text-white transition-colors cursor-pointer">info@krishnapower.com</p>
-                    <p className="text-gray-400 hover:text-white transition-colors cursor-pointer">support@krishnapower.com</p>
+                    <p className="text-gray-400 hover:text-white transition-colors cursor-pointer">info@krishnasolar.com</p>
+                    <p className="text-gray-400 hover:text-white transition-colors cursor-pointer">support@krishnasolar.com</p>
                   </div>
                 </div>
               </div>
@@ -220,8 +221,10 @@ export const Contact: React.FC = () => {
         {/* Footer */}
         <div className="mt-32 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="text-center md:text-left">
-             <h3 className="text-xl font-display font-bold mb-1">Krishna Power Technologies</h3>
-             <p className="text-sm text-gray-500">© 2024. All rights reserved.</p>
+             <div className="mb-4 md:mb-2 flex justify-center md:justify-start">
+               <Logo variant="light" className="h-20 md:h-24" />
+             </div>
+             <p className="text-sm text-gray-500">© 2024. Sun Shines Everywhere.</p>
           </div>
           
           <div className="flex items-center gap-6">

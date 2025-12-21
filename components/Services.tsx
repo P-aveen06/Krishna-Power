@@ -5,33 +5,6 @@ import { ArrowUpRight } from 'lucide-react';
 
 // --- Sub-components for 3D CSS Illustrations ---
 
-const SunOrb = () => (
-  <div className="relative w-32 h-32 md:w-40 md:h-40 flex items-center justify-center">
-    <div className="absolute inset-0 rounded-full bg-orange-400 blur-[40px] opacity-40 animate-pulse" />
-    <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-orange-300 via-orange-500 to-red-600 shadow-[inset_-10px_-10px_20px_rgba(0,0,0,0.2),inset_10px_10px_20px_rgba(255,255,255,0.4)]" />
-    <div className="absolute w-28 h-28 md:w-32 md:h-32 rounded-full border border-orange-200/30 animate-[spin_10s_linear_infinite]" />
-    <div className="absolute w-32 h-32 md:w-40 md:h-40 rounded-full border border-orange-200/10 animate-[spin_15s_linear_infinite_reverse]" />
-  </div>
-);
-
-const WaterDrop = () => (
-  <div className="relative w-32 h-32 md:w-40 md:h-40 flex items-center justify-center">
-    <div className="absolute inset-0 rounded-full bg-blue-400 blur-[40px] opacity-30" />
-    <div className="relative w-20 h-20 md:w-24 md:h-24 bg-gradient-to-b from-blue-300 to-blue-600 rounded-t-full rounded-br-full rounded-bl-xl shadow-[inset_-5px_-5px_15px_rgba(0,0,0,0.2),inset_5px_5px_15px_rgba(255,255,255,0.5)] transform -rotate-45" />
-    {/* Reflection */}
-    <div className="absolute top-8 right-10 w-3 h-6 bg-white opacity-40 rounded-full transform -rotate-45 blur-[1px]" />
-  </div>
-);
-
-const GridBlock = () => (
-  <div className="relative w-32 h-32 md:w-40 md:h-40 perspective-1000 flex items-center justify-center">
-    <div className="w-20 h-20 md:w-24 md:h-24 bg-gray-900 transform rotate-x-12 rotate-z-45 shadow-2xl border border-gray-700 relative overflow-hidden group-hover:scale-110 transition-transform duration-500">
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:20px_20px]" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
-    </div>
-  </div>
-);
-
 const AgriLeaf = () => (
   <div className="relative w-32 h-32 md:w-40 md:h-40 flex items-center justify-center">
     <div className="absolute inset-0 rounded-full bg-green-400 blur-[40px] opacity-30" />
@@ -40,22 +13,12 @@ const AgriLeaf = () => (
   </div>
 );
 
-const StreetLight = () => (
-  <div className="relative w-32 h-32 md:w-40 md:h-40 flex items-center justify-center">
-     <div className="absolute inset-0 rounded-full bg-yellow-200 blur-[50px] opacity-20" />
-     <div className="w-3 h-24 md:w-4 md:h-28 bg-gray-800 rounded-full relative">
-        <div className="absolute -top-5 -left-6 w-16 h-6 md:-top-6 md:-left-8 md:w-20 md:h-8 bg-gray-900 rounded-t-full" />
-        <div className="absolute -top-2 -left-4 w-12 h-10 md:-left-6 md:w-16 md:h-12 bg-yellow-100/50 blur-md rounded-[100%]" />
-     </div>
-  </div>
-);
-
 // --- Typing Text Component ---
 
 const TypingText = ({ text }: { text: string }) => {
   const [displayedText, setDisplayedText] = useState('');
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" }); // Triggers when element is 100px from bottom of viewport
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
   
   useEffect(() => {
     if (isInView) {
@@ -64,7 +27,7 @@ const TypingText = ({ text }: { text: string }) => {
         setDisplayedText(text.slice(0, index + 1));
         index++;
         if (index === text.length) clearInterval(intervalId);
-      }, 100); // Slower typing (100ms) for better visibility
+      }, 100);
       return () => clearInterval(intervalId);
     }
   }, [text, isInView]);
@@ -87,20 +50,18 @@ interface ServiceCardProps {
   title: string;
   description: string;
   index: number;
-  illustration: React.ReactNode;
+  illustration?: React.ReactNode;
+  image?: string;
   tags: string[];
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, index, illustration, tags }) => {
-  // Alternate colors slightly for depth
+const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, index, illustration, image, tags }) => {
   const bgColors = ['bg-white', 'bg-gray-50', 'bg-white', 'bg-gray-50', 'bg-white'];
 
   return (
     <div 
       className={`sticky mb-8 w-full max-w-5xl mx-auto rounded-[2.5rem] md:rounded-[3rem] border border-gray-200 shadow-xl md:shadow-2xl overflow-hidden ${bgColors[index % bgColors.length]}`}
       style={{ 
-        // Mobile: auto height for content fitting. Desktop: fixed 500px for stacking effect.
-        // We use a CSS class for responsive height below, but style is used for sticky positioning
         top: `calc(100px + ${index * 20}px)`, 
         zIndex: index + 1
       }}
@@ -135,19 +96,34 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, index, il
         </div>
 
         {/* Visual Content */}
-        <div className="w-full md:flex-1 h-64 md:h-auto bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center border-b md:border-b-0 md:border-l border-gray-100 relative overflow-hidden group order-1 md:order-2">
-          {/* Grid pattern overlay */}
-          <div className="absolute inset-0 opacity-[0.03]" 
-               style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '20px 20px' }} 
-          />
+        <div className={`w-full md:flex-1 h-64 md:h-auto flex items-center justify-center border-b md:border-b-0 md:border-l border-gray-100 relative overflow-hidden group order-1 md:order-2 ${!image ? 'bg-gradient-to-br from-gray-50 to-gray-100' : ''}`}>
           
-          <motion.div 
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            transition={{ type: "spring", stiffness: 300 }}
-            className="cursor-pointer transform scale-90 md:scale-100"
-          >
-            {illustration}
-          </motion.div>
+          {image ? (
+            <div className="absolute inset-0 w-full h-full">
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500 z-10" />
+              <motion.img 
+                src={image} 
+                alt={title}
+                className="w-full h-full object-cover"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.7, ease: "easeOut" }}
+              />
+            </div>
+          ) : (
+            <>
+              {/* Grid pattern overlay for illustrations */}
+              <div className="absolute inset-0 opacity-[0.03]" 
+                   style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '20px 20px' }} 
+              />
+              <motion.div 
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className="cursor-pointer transform scale-90 md:scale-100 relative z-20"
+              >
+                {illustration}
+              </motion.div>
+            </>
+          )}
         </div>
       </div>
     </div>
@@ -161,19 +137,19 @@ export const Services: React.FC = () => {
     {
       title: "On-Grid Solar Power Plants",
       description: "Maximize your savings with grid-tied systems. Export excess power and reduce your electricity bills to near zero.",
-      illustration: <SunOrb />,
+      image: "/service-ongrid.jpg",
       tags: ["Residential", "Commercial", "Net Metering"]
     },
     {
       title: "Solar Water Heaters",
       description: "Our own manufactured brand 'Krishna Solar'. Advanced heat absorption for consistent hot water, year-round.",
-      illustration: <WaterDrop />,
+      image: "/service-heater.jpg",
       tags: ["Manufacturing", "Thermal", "Efficient"]
     },
     {
       title: "Industrial Solar EPC",
       description: "Large-scale turnkey projects with superior ROI. We handle design, procurement, and construction for factories.",
-      illustration: <GridBlock />,
+      image: "/service-industrial.jpg",
       tags: ["Turnkey", "High Capacity", "O&M"]
     },
     {
@@ -185,7 +161,7 @@ export const Services: React.FC = () => {
     {
       title: "Smart Street Lights",
       description: "Eco-friendly lighting for roads and campuses. Automatic dusk-to-dawn operation with lithium batteries.",
-      illustration: <StreetLight />,
+      image: "/service-light.jpg",
       tags: ["Infrastructure", "Smart City", "LED"]
     }
   ];

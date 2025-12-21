@@ -1,111 +1,7 @@
 
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { MapPin, Zap, TrendingUp, DollarSign, Leaf, Cloud } from 'lucide-react';
-
-// --- CSS Art Scenes ---
-
-interface CloudPropProps {
-  delay?: number;
-  top?: string;
-  scale?: number;
-  duration?: number;
-}
-
-const CloudProp: React.FC<CloudPropProps> = ({ delay = 0, top = '10%', scale = 1, duration = 20 }) => (
-  <motion.div
-    initial={{ x: '-100%' }}
-    animate={{ x: '400%' }}
-    transition={{ duration: duration, repeat: Infinity, ease: "linear", delay: delay }}
-    className="absolute text-white/40 pointer-events-none"
-    style={{ top, transform: `scale(${scale})` }}
-  >
-    <Cloud fill="currentColor" size={48} className="drop-shadow-sm" />
-  </motion.div>
-);
-
-const SunProp = () => (
-  <div className="absolute top-8 right-8 w-20 h-20">
-    <motion.div 
-      animate={{ rotate: 360 }}
-      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-      className="w-full h-full border-2 border-dashed border-yellow-300 rounded-full absolute inset-0" 
-    />
-    <div className="absolute inset-4 bg-yellow-400 rounded-full shadow-[0_0_30px_rgba(250,204,21,0.6)] animate-pulse" />
-  </div>
-);
-
-const FarmScene = () => (
-  <div className="w-full h-64 md:h-full min-h-[300px] bg-gradient-to-b from-sky-200 to-sky-100 relative overflow-hidden rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none">
-    <SunProp />
-    <CloudProp delay={0} top="15%" duration={25} />
-    <CloudProp delay={10} top="25%" scale={0.8} duration={30} />
-    
-    {/* Ground */}
-    <div className="absolute bottom-0 w-full h-1/3 bg-[#4ade80] rounded-t-[50%] scale-150 translate-y-4" />
-    
-    {/* Crops */}
-    <div className="absolute bottom-12 w-full flex justify-center gap-8 px-10">
-      {[...Array(5)].map((_, i) => (
-        <motion.div
-          key={i}
-          animate={{ rotate: [0, 5, 0, -5, 0] }}
-          transition={{ duration: 3, delay: i * 0.2, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center origin-bottom"
-        >
-          <div className="w-4 h-4 bg-green-600 rounded-full" />
-          <div className="w-1 h-8 bg-green-700" />
-        </motion.div>
-      ))}
-    </div>
-
-    {/* Pump & Water */}
-    <div className="absolute bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center z-10">
-      <div className="w-16 h-20 bg-gray-700 rounded-lg shadow-xl relative border-b-4 border-gray-900">
-        <div className="absolute top-1/2 -right-4 w-6 h-2 bg-gray-600" /> {/* Pipe */}
-        <motion.div 
-          animate={{ height: [0, 40], opacity: [0.8, 0] }}
-          transition={{ duration: 1, repeat: Infinity }}
-          className="absolute top-[55%] -right-4 w-2 bg-blue-400 rounded-full origin-top transform rotate-12"
-        />
-      </div>
-    </div>
-  </div>
-);
-
-const HomeScene = () => (
-  <div className="w-full h-64 md:h-full min-h-[300px] bg-gradient-to-b from-indigo-200 to-purple-100 relative overflow-hidden rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none">
-    <SunProp />
-    <CloudProp delay={5} top="10%" duration={35} />
-    
-    {/* Ground */}
-    <div className="absolute bottom-0 w-full h-24 bg-gray-100" />
-    
-    {/* House */}
-    <div className="absolute bottom-12 left-1/2 -translate-x-1/2 w-48">
-      {/* Roof */}
-      <div className="w-56 -ml-4 h-0 border-l-[20px] border-l-transparent border-r-[20px] border-r-transparent border-b-[40px] border-b-gray-800 relative">
-        {/* Panels on Roof */}
-        <div className="absolute top-2 left-4 right-4 bottom-2 bg-blue-900 flex flex-wrap gap-0.5 p-0.5 opacity-90 skew-x-12 transform origin-bottom-left">
-           {[...Array(6)].map((_, i) => (
-             <motion.div 
-              key={i}
-              animate={{ opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 2, delay: i * 0.2, repeat: Infinity }}
-              className="flex-1 min-w-[30%] bg-blue-500 rounded-[1px]" 
-             />
-           ))}
-        </div>
-      </div>
-      {/* Body */}
-      <div className="w-48 h-32 bg-white shadow-lg relative flex justify-center items-end pb-0">
-        <div className="w-12 h-20 bg-amber-900 rounded-t-lg" /> {/* Door */}
-        <div className="absolute top-4 left-4 w-10 h-10 bg-sky-200 border-2 border-gray-100 rounded-lg" /> {/* Window */}
-        <div className="absolute top-4 right-4 w-10 h-10 bg-sky-200 border-2 border-gray-100 rounded-lg" /> {/* Window */}
-      </div>
-    </div>
-  </div>
-);
+import { MapPin, Zap, TrendingUp, DollarSign, Leaf } from 'lucide-react';
 
 // --- Stats Component ---
 
@@ -203,8 +99,14 @@ export const Projects: React.FC = () => {
             className="group relative bg-white rounded-[3rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col md:flex-row overflow-hidden hover:shadow-[0_30px_60px_rgba(0,0,0,0.08)] transition-shadow duration-500"
           >
             {/* Visual Side */}
-            <div className="w-full md:w-5/12 relative">
-               <FarmScene />
+            <div className="w-full md:w-5/12 relative h-[300px] md:h-auto overflow-hidden">
+               <div className="absolute inset-0 bg-gray-200 animate-pulse" /> {/* Loading state placeholder */}
+               <motion.img 
+                  src="/project-farm.jpg" 
+                  alt="Agricultural Solar Project"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+               />
+               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-60" />
             </div>
 
             {/* Content Side */}
@@ -243,8 +145,14 @@ export const Projects: React.FC = () => {
             className="group relative bg-white rounded-[3rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col md:flex-row-reverse overflow-hidden hover:shadow-[0_30px_60px_rgba(0,0,0,0.08)] transition-shadow duration-500"
           >
             {/* Visual Side */}
-            <div className="w-full md:w-5/12 relative">
-               <HomeScene />
+            <div className="w-full md:w-5/12 relative h-[300px] md:h-auto overflow-hidden">
+               <div className="absolute inset-0 bg-gray-200 animate-pulse" />
+               <motion.img 
+                  src="/project-home.jpg" 
+                  alt="Residential Solar Project"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+               />
+               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-60" />
             </div>
 
             {/* Content Side */}

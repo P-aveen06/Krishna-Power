@@ -13,7 +13,7 @@ interface StatBadgeProps {
 }
 
 const StatBadge: React.FC<StatBadgeProps> = ({ icon: Icon, value, label, color }) => (
-  <motion.div 
+  <motion.div
     whileHover={{ scale: 1.05, y: -2 }}
     className={`flex-1 p-4 rounded-2xl border ${color} bg-white/50 backdrop-blur-sm flex flex-col items-center text-center gap-2 transition-shadow hover:shadow-lg`}
   >
@@ -41,24 +41,24 @@ export const Projects: React.FC = () => {
 
   return (
     <section ref={containerRef} id="projects" className="py-32 bg-white relative overflow-hidden">
-      
+
       {/* Background Decoration with Parallax */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <motion.div 
+        <motion.div
           style={{ y: yBlob1 }}
-          className="absolute top-20 -left-20 w-96 h-96 bg-green-50 rounded-full blur-3xl opacity-50" 
+          className="absolute top-20 -left-20 w-96 h-96 bg-green-50 rounded-full blur-3xl opacity-50"
         />
-        <motion.div 
+        <motion.div
           style={{ y: yBlob2 }}
-          className="absolute bottom-20 -right-20 w-96 h-96 bg-blue-50 rounded-full blur-3xl opacity-50" 
+          className="absolute bottom-20 -right-20 w-96 h-96 bg-blue-50 rounded-full blur-3xl opacity-50"
         />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        
+
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-20">
-          <motion.span 
+          <motion.span
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -67,7 +67,7 @@ export const Projects: React.FC = () => {
           >
             Case Studies
           </motion.span>
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -76,7 +76,7 @@ export const Projects: React.FC = () => {
           >
             Real stories of <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-teal-500">energy independence.</span>
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -89,9 +89,9 @@ export const Projects: React.FC = () => {
 
         {/* Project Cards */}
         <div className="flex flex-col gap-12">
-          
+
           {/* Project 1: Agriculture */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -100,13 +100,13 @@ export const Projects: React.FC = () => {
           >
             {/* Visual Side */}
             <div className="w-full md:w-5/12 relative h-[300px] md:h-auto overflow-hidden">
-               <div className="absolute inset-0 bg-gray-200 animate-pulse" /> {/* Loading state placeholder */}
-               <motion.img 
-                  src="/project-farm.jpg" 
-                  alt="Agricultural Solar Project"
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-               />
-               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-60" />
+              <div className="absolute inset-0 bg-gray-200 animate-pulse" /> {/* Loading state placeholder */}
+              <motion.img
+                src="/project-farm.jpeg"
+                alt="Agricultural Solar Project"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-60" />
             </div>
 
             {/* Content Side */}
@@ -115,7 +115,7 @@ export const Projects: React.FC = () => {
                 <Leaf size={16} />
                 <span>Agricultural Success</span>
               </div>
-              
+
               <h3 className="text-3xl font-display font-bold text-gray-900 mb-2">Diesel-Free Farming</h3>
               <div className="flex items-center gap-2 text-gray-400 mb-6 text-sm">
                 <MapPin size={14} />
@@ -123,8 +123,8 @@ export const Projects: React.FC = () => {
               </div>
 
               <p className="text-gray-600 leading-relaxed mb-8">
-                Farmer Pari faced huge losses due to diesel costs for his 5HP pump. 
-                We installed an off-grid solar solution that eliminated fuel dependency 
+                Farmer Pari faced huge losses due to diesel costs for his 5HP pump.
+                We installed an off-grid solar solution that eliminated fuel dependency
                 and provided reliable daytime irrigation for his 4-acre land.
               </p>
 
@@ -137,7 +137,7 @@ export const Projects: React.FC = () => {
           </motion.div>
 
           {/* Project 2: Residential */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -146,13 +146,13 @@ export const Projects: React.FC = () => {
           >
             {/* Visual Side */}
             <div className="w-full md:w-5/12 relative h-[300px] md:h-auto overflow-hidden">
-               <div className="absolute inset-0 bg-gray-200 animate-pulse" />
-               <motion.img 
-                  src="/project-home.jpg" 
-                  alt="Residential Solar Project"
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-               />
-               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-60" />
+              <div className="absolute inset-0 bg-gray-200 animate-pulse" />
+              <motion.img
+                src="/project-home.jpeg"
+                alt="Residential Solar Project"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-60" />
             </div>
 
             {/* Content Side */}
@@ -161,7 +161,7 @@ export const Projects: React.FC = () => {
                 <Zap size={16} />
                 <span>Residential Rooftop</span>
               </div>
-              
+
               <h3 className="text-3xl font-display font-bold text-gray-900 mb-2">The Zero-Bill Home</h3>
               <div className="flex items-center gap-2 text-gray-400 mb-6 text-sm">
                 <MapPin size={14} />
@@ -169,8 +169,8 @@ export const Projects: React.FC = () => {
               </div>
 
               <p className="text-gray-600 leading-relaxed mb-8">
-                Ms. Prathibha wanted to reduce her ₹2,800 monthly bill. We installed a 
-                4kW On-Grid system with Waaree panels. Her bill dropped to ₹500, and 
+                Ms. Prathibha wanted to reduce her ₹2,800 monthly bill. We installed a
+                4kW On-Grid system with Waaree panels. Her bill dropped to ₹500, and
                 she now exports excess power back to the grid.
               </p>
 

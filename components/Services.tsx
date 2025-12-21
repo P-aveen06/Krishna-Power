@@ -19,7 +19,7 @@ const TypingText = ({ text }: { text: string }) => {
   const [displayedText, setDisplayedText] = useState('');
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  
+
   useEffect(() => {
     if (isInView) {
       let index = 0;
@@ -35,7 +35,7 @@ const TypingText = ({ text }: { text: string }) => {
   return (
     <span ref={ref} className="font-mono text-orange-600 inline-block min-h-[1.5em]">
       {displayedText}
-      <motion.span 
+      <motion.span
         animate={{ opacity: [0, 1, 0] }}
         transition={{ repeat: Infinity, duration: 0.8 }}
         className="inline-block ml-1 w-2 h-6 bg-orange-600 align-middle"
@@ -59,10 +59,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, index, il
   const bgColors = ['bg-white', 'bg-gray-50', 'bg-white', 'bg-gray-50', 'bg-white'];
 
   return (
-    <div 
+    <div
       className={`sticky mb-8 w-full max-w-5xl mx-auto rounded-[2.5rem] md:rounded-[3rem] border border-gray-200 shadow-xl md:shadow-2xl overflow-hidden ${bgColors[index % bgColors.length]}`}
-      style={{ 
-        top: `calc(100px + ${index * 20}px)`, 
+      style={{
+        top: `calc(100px + ${index * 20}px)`,
         zIndex: index + 1
       }}
     >
@@ -72,7 +72,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, index, il
           <div className="absolute top-4 left-6 md:top-8 md:left-10 text-6xl md:text-9xl font-display font-bold text-gray-100 select-none -z-10">
             0{index + 1}
           </div>
-          
+
           <div className="flex gap-2 mb-4 md:mb-6 flex-wrap mt-8 md:mt-0">
             {tags.map(tag => (
               <span key={tag} className="px-3 py-1 bg-gray-100 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-wider text-gray-600">
@@ -87,9 +87,9 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, index, il
           <p className="text-base md:text-lg text-gray-500 leading-relaxed mb-6 md:mb-8 max-w-md">
             {description}
           </p>
-          
+
           <button className="flex items-center gap-2 text-xs md:text-sm font-bold uppercase tracking-widest text-black group w-max">
-            Learn More 
+            Learn More
             <span className="w-8 h-px bg-black transition-all group-hover:w-16" />
             <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
           </button>
@@ -97,12 +97,12 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, index, il
 
         {/* Visual Content */}
         <div className={`w-full md:flex-1 h-64 md:h-auto flex items-center justify-center border-b md:border-b-0 md:border-l border-gray-100 relative overflow-hidden group order-1 md:order-2 ${!image ? 'bg-gradient-to-br from-gray-50 to-gray-100' : ''}`}>
-          
+
           {image ? (
             <div className="absolute inset-0 w-full h-full">
               <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500 z-10" />
-              <motion.img 
-                src={image} 
+              <motion.img
+                src={image}
                 alt={title}
                 className="w-full h-full object-cover"
                 whileHover={{ scale: 1.05 }}
@@ -112,10 +112,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, index, il
           ) : (
             <>
               {/* Grid pattern overlay for illustrations */}
-              <div className="absolute inset-0 opacity-[0.03]" 
-                   style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '20px 20px' }} 
+              <div className="absolute inset-0 opacity-[0.03]"
+                style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '20px 20px' }}
               />
-              <motion.div 
+              <motion.div
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 className="cursor-pointer transform scale-90 md:scale-100 relative z-20"
@@ -137,19 +137,19 @@ export const Services: React.FC = () => {
     {
       title: "On-Grid Solar Power Plants",
       description: "Maximize your savings with grid-tied systems. Export excess power and reduce your electricity bills to near zero.",
-      image: "/service-ongrid.jpg",
+      image: "/service-ongrid.jpeg",
       tags: ["Residential", "Commercial", "Net Metering"]
     },
     {
       title: "Solar Water Heaters",
       description: "Our own manufactured brand 'Krishna Solar'. Advanced heat absorption for consistent hot water, year-round.",
-      image: "/service-heater.jpg",
+      image: "/service-heater.jpeg",
       tags: ["Manufacturing", "Thermal", "Efficient"]
     },
     {
       title: "Industrial Solar EPC",
       description: "Large-scale turnkey projects with superior ROI. We handle design, procurement, and construction for factories.",
-      image: "/service-industrial.jpg",
+      image: "/service-industrial.jpeg",
       tags: ["Turnkey", "High Capacity", "O&M"]
     },
     {
@@ -161,7 +161,7 @@ export const Services: React.FC = () => {
     {
       title: "Smart Street Lights",
       description: "Eco-friendly lighting for roads and campuses. Automatic dusk-to-dawn operation with lithium batteries.",
-      image: "/service-light.jpg",
+      image: "/service-light.jpeg",
       tags: ["Infrastructure", "Smart City", "LED"]
     }
   ];
@@ -169,7 +169,7 @@ export const Services: React.FC = () => {
   return (
     <section id="services" className="py-20 md:py-32 bg-white relative">
       <div className="container mx-auto px-6">
-        
+
         {/* Section Header */}
         <div className="mb-16 md:mb-24 md:pl-10 border-l-2 border-orange-500">
           <h2 className="text-4xl md:text-7xl font-display font-bold text-gray-900 mb-4 tracking-tight">
@@ -183,7 +183,7 @@ export const Services: React.FC = () => {
         {/* Sticky Cards Container */}
         <div className="relative pb-24">
           {services.map((service, index) => (
-            <ServiceCard 
+            <ServiceCard
               key={index}
               index={index}
               {...service}

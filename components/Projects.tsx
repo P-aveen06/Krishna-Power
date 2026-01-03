@@ -123,9 +123,7 @@ export const Projects: React.FC = () => {
               </div>
 
               <p className="text-gray-600 leading-relaxed mb-8">
-                Farmer Pari faced huge losses due to diesel costs for his 5HP pump.
-                We installed an off-grid solar solution that eliminated fuel dependency
-                and provided reliable daytime irrigation for his 4-acre land.
+                Diesel-free farming has been made possible as Mr. Pari has installed a 5 HP solar pump for agricultural use. This solar pump operates using renewable solar energy, eliminating the need for diesel and reducing operating costs. The installation supports sustainable farming practices while ensuring reliable water supply for irrigation.
               </p>
 
               <div className="flex flex-wrap gap-4">
@@ -169,9 +167,7 @@ export const Projects: React.FC = () => {
               </div>
 
               <p className="text-gray-600 leading-relaxed mb-8">
-                Ms. Prathibha wanted to reduce her ₹2,800 monthly bill. We installed a
-                4kW On-Grid system with Waaree panels. Her bill dropped to ₹500, and
-                she now exports excess power back to the grid.
+                Ms. Prathiba installed a 5 kW hybrid solar system at her residence. After the installation, her electricity consumption from the grid was significantly reduced, and she is now receiving a zero electricity bill. The hybrid system efficiently meets her daily power needs by utilizing solar energy along with battery backup, helping her save on electricity costs and promote clean energy usage.
               </p>
 
               <div className="flex flex-wrap gap-4">

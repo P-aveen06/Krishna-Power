@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, ArrowRight, Instagram, Linkedin, Facebook } from 'lucide-react';
+import { Mail, Phone, MapPin, ArrowRight, Instagram, Linkedin } from 'lucide-react';
 import { Logo } from './Logo';
 
 // --- Constellation Canvas Animation ---
